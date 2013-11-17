@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html" locale="en">
+    <h:head title="Perfomance Test PrimeFaces">
+        <f:facet name="first">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="pragma" content="no-cache"/>
+            <meta http-equiv="cache-control" content="no-cache"/>
+            <meta http-equiv="expires" content="0"/>
+        </f:facet>
+        <f:facet name="last">
+            <style type="text/css">
+                body {
+                    font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
+                    font-size: 12px;
+                    padding: 0 !important;
+                    margin: 10px;
+                }
+
+                input,
+                select,
+                .ui-widget,
+                .ui-widget input,
+                .ui-widget select,
+                .ui-widget-header,
+                .ui-widget-content,
+                .ui-widget-header .ui-widget-header,
+                .ui-widget-content .ui-widget-content {
+                    font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
+                    font-size: 12px !important;
+                }
+            </style>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <h:form id="mainForm" prependId="false">
+            
+            <div style="padding:15px 0 15px 0;font-size:16px;font-weight:bold;">
+                Perfomance Test for Input and Select Componenst
+            </div>
+            
+            <p:menu style="width:300px;">
+                <p:menuitem value="Inputs / Selects (PrimeFaces)" ajax="false" url="/views/prime/inputsSelects.jsf"/>
+                <p:menuitem value="Inputs / Selects (JSF Standard)" ajax="false" url="/views/standard/inputsSelects.jsf"/>
+                
+                <p:separator/>
+                
+                <p:menuitem value="Only Inputs (PrimeFaces)" ajax="false" url="/views/prime/inputs.jsf"/>
+                <p:menuitem value="Only Inputs (JSF Standard)" ajax="false" url="/views/standard/inputs.jsf"/>
+                
+                <p:separator/>
+                
+                <p:menuitem value="Only Selects (PrimeFaces)" ajax="false" url="/views/prime/selects.jsf"/>
+                <p:menuitem value="Only Selects (JSF Standard)" ajax="false" url="/views/standard/selects.jsf"/>                
+            </p:menu>
+
+        </h:form>
+    </h:body>
+</f:view>
+</html>

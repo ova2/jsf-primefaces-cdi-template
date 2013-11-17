@@ -1,0 +1,19 @@
+body {
+    font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
+    font-size: 12px;
+    padding: 0 !important;
+    margin: 10px;
+}
+
+input,
+select,
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget-header,
+.ui-widget-content,
+.ui-widget-header .ui-widget-header,
+.ui-widget-content .ui-widget-content {
+    font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
+    font-size: 12px !important;
+}

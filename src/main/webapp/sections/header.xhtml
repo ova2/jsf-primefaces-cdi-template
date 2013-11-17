@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+<div style="position:absolute; top:15px; right: 15px;">#{caption}</div>
+
+<h:panelGrid columns="3" style="margin:15px 0 15px 0">
+    <p:commandButton value="Back to Overview" ajax="false" action="/views/home.xhtml"/>
+    <p:commandButton value="Reload page" ajax="false" style="margin:0 15px 0 5px"/>
+    <h:panelGroup id="timeOutput" layout="block"
+                  style="color:red;font-weight:bold;font-size:16px;"/>
+</h:panelGrid>
+
+</ui:composition>
