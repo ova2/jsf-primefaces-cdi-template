@@ -19,12 +19,14 @@ public class SelectLevelListener {
 
     private boolean errorOccured = false;
 
+    private int lastLevel = 1;
+
     public int handleNavigation(SelectLevelEvent selectLevelEvent) {
-        if (errorOccured) {
-            return 2;
-        } else {
-            return selectLevelEvent.getNewLevel();
+        if (!errorOccured) {
+            lastLevel = selectLevelEvent.getNewLevel();
         }
+
+        return lastLevel;
     }
 
     public void setErrorOccured(boolean errorOccured) {

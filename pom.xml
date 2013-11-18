@@ -130,64 +130,9 @@
                 <configuration>
                     <webappDirectory>${project.build.directory}/webapp</webappDirectory>
                     <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
-                    <packagingExcludes>**/web-overwrite.xml,**/jetty-env.xml,WEB-INF/web.xml</packagingExcludes>
+                    <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
                     <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.9.v20130131</version>
-                <configuration>
-                    <webAppConfig>
-                        <contextPath>/perf-test</contextPath>
-                        <overrideDescriptor>src/main/webapp/WEB-INF/web-overwrite.xml</overrideDescriptor>
-                    </webAppConfig>
-                    <webXml>${project.build.directory}/classes/WEB-INF/web.xml</webXml>
-                    <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
-                    <stopPort>9966</stopPort>
-                    <stopKey>foo</stopKey>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jboss.weld.servlet</groupId>
-                        <artifactId>weld-servlet</artifactId>
-                        <version>1.1.16.Final</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>${jsf.group}</groupId>
-                        <artifactId>${jsf.artifact}-api</artifactId>
-                        <version>${jsf.version}</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>jstl</groupId>
-                                <artifactId>jstl</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                    <dependency>
-                        <groupId>${jsf.group}</groupId>
-                        <artifactId>${jsf.artifact}-impl</artifactId>
-                        <version>${jsf.version}</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>jstl</groupId>
-                                <artifactId>jstl</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                    <dependency>
-                        <groupId>javax.el</groupId>
-                        <artifactId>el-api</artifactId>
-                        <version>2.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>javax.validation</groupId>
-                        <artifactId>validation-api</artifactId>
-                        <version>1.0.0.GA</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -224,7 +169,6 @@
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
             <version>2.2</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>de.odysseus.juel</groupId>
@@ -258,6 +202,11 @@
 			<artifactId>primefaces</artifactId>
 			<version>4.0</version>
 		</dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.10</version>
+        </dependency>        
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
@@ -303,7 +252,7 @@
                 <jsf.impl>myfaces</jsf.impl>
                 <jsf.group>org.apache.myfaces.core</jsf.group>
                 <jsf.artifact>myfaces</jsf.artifact>
-                <jsf.version>2.2.0-beta</jsf.version>
+                <jsf.version>2.1.12</jsf.version>
             </properties>
         </profile>
         <profile>
@@ -315,7 +264,7 @@
                 <jsf.impl>mojarra</jsf.impl>
                 <jsf.group>com.sun.faces</jsf.group>
                 <jsf.artifact>jsf</jsf.artifact>
-                <jsf.version>2.2.4</jsf.version>
+                <jsf.version>2.1.26</jsf.version>
             </properties>
         </profile>
     </profiles>

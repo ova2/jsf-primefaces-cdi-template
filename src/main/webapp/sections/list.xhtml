@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+    <p:dataTable value="#{tableController.rows}" var="row" rowIndexVar="rowIdx"
+                 paginator="true" paginatorPosition="bottom" rows="10">
+        <p:column style="width:32px;">#{rowIdx + 1}</p:column>
+
+        <p:column headerText="Column 1" sortBy="#{row.column1}">
+            <p:commandLink value="#{row.column1}" update=":mainForm:masterDetail">
+                <pe:selectDetailLevel contextValue="#{row}"/>
+            </p:commandLink>
+        </p:column>
+        <p:column headerText="Column 2" sortBy="#{row.column2}">
+            <h:outputText value="#{row.column2}"/>
+        </p:column>
+        <p:column headerText="Column 3" sortBy="#{row.column3}">
+            <h:outputText value="#{row.column3}"/>
+        </p:column>
+        <p:column headerText="Column 4" sortBy="#{row.column4}">
+            <h:outputText value="#{row.column4}"/>
+        </p:column>
+        <p:column headerText="Column 5" sortBy="#{row.column5}">
+            <h:outputText value="#{row.column5}"/>
+        </p:column>
+    </p:dataTable>
+</ui:composition>       

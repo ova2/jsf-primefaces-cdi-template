@@ -1,8 +1,8 @@
 body {
     font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
     font-size: 12px;
-    padding: 0 !important;
-    margin: 10px;
+    padding: 0;
+    margin: 0;
 }
 
 input,
@@ -16,4 +16,57 @@ select,
 .ui-widget-content .ui-widget-content {
     font-family: Segoe UI, Arial, "Trebuchet MS", sans-serif;
     font-size: 12px !important;
+}
+
+.pe-master-detail .ui-breadcrumb .ui-breadcrumb-chevron {
+    margin-top: 4px;
+}
+
+.firstbtn {
+    margin-top: 13px;
+}
+
+.btn {
+    margin-top: 13px;
+    margin-left: 3px;
+}
+
+.logo {
+    margin: 15px 0 15px 30px;
+}
+
+.slogan {
+    position: absolute;
+    color: #A2A1A1;
+    font-weight: bold;
+    top: 25px;
+    right: 40px;
+}
+
+.menuColumn {
+    vertical-align: top;
+    padding-left: 30px;
+}
+
+.contentColumn {
+    vertical-align: top;
+    padding: 0 30px 0 30px;
+}
+
+#servicesList {
+    width: 200px;
+}
+
+#servicesList .ui-menuitem-link {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    line-height: 16px;
+}
+
+#servicesList .ui-menuitem-text {
+    padding-left: 4px;
+}
+
+#masterDetail {
+    width: 880px;
 }

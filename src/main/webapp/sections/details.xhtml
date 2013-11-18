@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+    <f:facet name="label">
+        <h:outputFormat value="#{msgs['detailsFor']}">
+            <f:param value="#{curRow.column1}"/>
+        </h:outputFormat>
+    </f:facet>
+
+    <h:panelGrid columns="1" cellpadding="0" cellspacing="0">
+        <h:outputText value="#{curRow.column1}"/>
+        <h:outputText value="#{curRow.column2}"/>
+        <h:outputText value="#{curRow.column3}"/>
+        <h:outputText value="#{curRow.column4}"/>
+        <h:outputText value="#{curRow.column5}"/>
+    </h:panelGrid>
+    
+    <p:commandButton value="#{msgs['more']}" process="masterDetail"
+                     update=":mainForm:masterDetail"
+                     action="#{tableController.navigateToMore}"
+                     styleClass="firstbtn" icon="ui-icon-arrowthick-1-e">
+        <pe:selectDetailLevel step="1"/>
+    </p:commandButton>
+    <p:commandButton value="#{msgs['back']}" icon="ui-icon-arrowreturnthick-1-n"
+                     update=":mainForm:masterDetail"
+                     immediate="true" styleClass="btn">
+        <pe:selectDetailLevel level="1"/>
+    </p:commandButton>
+</ui:composition>       
