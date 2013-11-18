@@ -1,4 +1,4 @@
-package org.primefaces.perf;
+package jsf.template.bean;
 
 import java.io.Serializable;
 

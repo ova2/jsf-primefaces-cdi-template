@@ -2,39 +2,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-<f:view contentType="text/html" locale="en">
-    <h:head title="Perfomance Test PrimeFaces">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html" locale="#{userSettings.locale}">
+    <h:head title="JSF-PrimeFaces-CDI Sample Web Application">
         <f:facet name="first">
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta http-equiv="pragma" content="no-cache"/>
             <meta http-equiv="cache-control" content="no-cache"/>
             <meta http-equiv="expires" content="0"/>
         </f:facet>
-        <f:facet name="last">
-            <script type="text/javascript">
-                $(window).load(function () {
-                    setTimeout(function () {
-                        window.performance = window.performance ||
-                                             window.mozPerformance ||
-                                             window.msPerformance ||
-                                             window.webkitPerformance || {};
-                        var timing = performance.timing || {};
-
-                        var loadTime = timing.loadEventEnd - timing.responseEnd;
-                        console.log(loadTime);
-                        $("#timeOutput").html("Load Time (ms) = " + loadTime);
-                    }, 0);
-                });
-            </script>
-        </f:facet>
     </h:head>
     <h:body>
-        <h:form id="mainForm" prependId="false">            
-            <ui:insert name="content"/>
+        <h:graphicImage library="images" name="logo.png" styleClass="logo"/>
+
+        <h:form id="mainForm" prependId="false">
+            <div class="slogan">
+                <h:outputText value="JSF-PrimeFaces-CDI Sample WebClient - &#169; 2013-2014"/>
+                
+                <p:commandButton value="#{msgs['logout']}" icon="ui-icon-power" ajax="false"
+                                 style="margin-left:50px" action="#{logoutController.logout}"
+                                 immediate="true"/>
+            </div>
+
+            <h:panelGrid columns="2" columnClasses="menuColumn,contentColumn">
+                <p:menu id="servicesList">
+                    <p:menuitem value="#{msgs['service.1']}"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('/views/firstService.xhtml')}"
+                                icon="ui-icon-play" onclick="selectServiceLink(this)" ajax="false"
+                                url="/views/firstService.jsf"/>
+                    <p:menuitem value="#{msgs['service.2']}"
+                                styleClass="#{navigationContext.getMenuitemStyleClass('/views/secondService.xhtml')}"
+                                icon="ui-icon-play" onclick="selectServiceLink(this)" ajax="false"
+                                url="/views/secondService.jsf"/>
+                </p:menu>
+                
+                <h:panelGroup layout="block">
+                    <ui:insert name="content"/>
+                </h:panelGroup>
+            </h:panelGrid>
         </h:form>
-        
+
         <h:outputStylesheet library="css" name="common.css"/>
+        <h:outputScript library="js" name="common.js" target="body"/>
+        <ui:insert name="resources"/>
     </h:body>
 </f:view>
 </html>

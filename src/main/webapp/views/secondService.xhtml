@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                template="/templates/masterLayout.xhtml">
+    <ui:define name="content">
+
+        <p:growl id="growl"/>
+        
+        <pe:masterDetail id="masterDetail" level="#{currentLevelData.currentLevel}"
+                         selectLevelListener="#{selectLevelListener.handleNavigation}">
+            <f:facet name="header">
+                <p:messages/>
+            </f:facet>
+
+            <pe:masterDetailLevel level="1" levelLabel="#{msgs['secservice.secContextList']}">
+                <ui:include src="/secs/sections/secrets/list.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="2" rendered="#{currentLevelData.currentLevel == 2}">
+                <ui:include src="/secs/sections/secrets/load.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="3" rendered="#{currentLevelData.currentLevel == 3}">
+                <ui:include src="/secs/sections/secrets/password.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="4"
+                                  rendered="#{currentLevelData.currentLevel == 4 || currentLevelData.currentLevel == 6 || currentLevelData.currentLevel == 7}">
+                <ui:include src="/secs/sections/secrets/secrets.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="5" levelLabel="#{msgs['secservice.addNewContext']}"
+                                  rendered="#{currentLevelData.currentLevel == 5}">
+                <ui:include src="/secs/sections/secrets/addcontext.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="6" rendered="#{currentLevelData.currentLevel == 6}">
+                <ui:include src="/secs/sections/secrets/secretform.xhtml"/>
+            </pe:masterDetailLevel>
+
+            <pe:masterDetailLevel level="7" levelLabel="#{msgs['secservice.deleteSec']}"
+                                  rendered="#{currentLevelData.currentLevel == 7}">
+                <ui:include src="/secs/sections/secrets/delete.xhtml"/>
+            </pe:masterDetailLevel>
+        </pe:masterDetail>
+
+    </ui:define>
+</ui:composition>
