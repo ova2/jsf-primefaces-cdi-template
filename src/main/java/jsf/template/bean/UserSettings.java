@@ -1,7 +1,5 @@
 package jsf.template.bean;
 
-import org.omnifaces.util.Faces;
-
 import java.io.Serializable;
 
 import java.util.Locale;
