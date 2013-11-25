@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <p:dialog header="#{msgs['confirmDialogHeader']}" widgetVar="saveDlgWdgt" resizable="false" modal="true">
+        <h:panelGroup layout="block" style="padding:5px;">
+            <h:outputText value="#{msgs['confirmDialogBody']}"/>
+        </h:panelGroup>
+        <p:commandButton value="#{msgs['ok']}" oncomplete="PF('saveDlgWdgt').hide();"
+                         process="@this :mainForm:masterDetail"
+                         update=":mainForm:masterDetail"
+                         action="#{tableController.save}"
+                         styleClass="firstbtn">
+            <pe:selectDetailLevel step="-1"/>
+        </p:commandButton>
+        <p:commandButton value="#{msgs['close']}" type="button" onclick="PF('saveDlgWdgt').hide();"
+                         styleClass="btn"/>
+    </p:dialog>
+</ui:composition>       

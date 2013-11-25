@@ -93,6 +93,24 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     
+    <!-- Error pages -->
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/views/errorpages/expired.jsf</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.RuntimeException</exception-type>
+        <location>/views/errorpages/runtime.jsf</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/views/errorpages/500.jsf</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/views/errorpages/404.jsf</location>
+    </error-page>
+    
     <!-- MimeType mapping -->
     <mime-mapping>
         <extension>xhtml</extension>

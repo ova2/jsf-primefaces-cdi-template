@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/masterLayout.xhtml">
+
+    <ui:define name="content">
+        <h2 style="margin-top:0">#{msgs['runtime.summary']}</h2>
+
+        <ui:include src="/sections/errorpages/details.xhtml"/>
+    </ui:define>
+
+    <ui:insert name="resources">
+        <h:outputScript rendered="#{facesContext.partialViewContext.ajaxRequest}">$(window).scrollTop(0);</h:outputScript>
+    </ui:insert>
+
+</ui:composition>

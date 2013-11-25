@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pe="http://primefaces.org/ui/extensions">
     <p:dataTable value="#{tableController.rows}" var="row" rowIndexVar="rowIdx"
@@ -8,7 +9,10 @@
         <p:column style="width:32px;">#{rowIdx + 1}</p:column>
 
         <p:column headerText="Column 1" sortBy="#{row.column1}">
-            <p:commandLink value="#{row.column1}" update=":mainForm:masterDetail">
+            <p:commandLink update=":mainForm:masterDetail">
+                <h:outputText value="#{row.column1}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" timeZone="Europe/Berlin"/>
+                </h:outputText>
                 <pe:selectDetailLevel contextValue="#{row}"/>
             </p:commandLink>
         </p:column>

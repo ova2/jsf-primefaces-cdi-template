@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:of="http://omnifaces.org/functions"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ul>
+        <li>#{msgs['details.date']} #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
+        <li>#{msgs['details.userAgent']} #{header['user-agent']}</li>
+        <li>#{msgs['details.userIP']} #{request.remoteAddr}</li>
+        <li>
+            #{msgs['details.requestUri']} <a
+                href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a>
+        </li>
+        <li>#{msgs['details.statusCode']} #{requestScope['javax.servlet.error.status_code']}</li>
+        <li>#{msgs['details.exceptionType']} #{requestScope['javax.servlet.error.exception_type']}</li>
+        <li>#{msgs['details.exceptionMsg']} #{requestScope['javax.servlet.error.message']}</li>
+        <li>#{msgs['details.stackTrace']}
+            <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre>
+        </li>
+    </ul>
+
+</ui:composition>

@@ -10,18 +10,33 @@
         </h:outputFormat>
     </f:facet>
 
-    <h:panelGrid columns="1" cellpadding="0" cellspacing="0">
-        <h:outputText value="#{curRow.column1}"/>
-        <h:outputText value="#{curRow.column2}"/>
-        <h:outputText value="#{curRow.column3}"/>
-        <h:outputText value="#{curRow.column4}"/>
-        <h:outputText value="#{curRow.column5}"/>
+    <h:panelGrid columns="2" columnClasses="formColumn1,formColumn2"
+                 cellpadding="0" cellspacing="0">
+        <h:outputText value="Column 1"/>
+        <p:calendar value="#{curRow.column1}" pattern="dd.MM.yyyy" showOn="button"
+                    timeZone="Europe/Berlin" label="Column 1"/>
+        
+        <h:outputText value="Column 2"/>
+        <p:spinner value="#{curRow.column2}" min="0" max="999999999" label="Column 2">
+            <pe:keyFilter mask="num"/>
+        </p:spinner>
+        
+        <h:outputText value="Column 3"/>
+        <p:inputText value="#{curRow.column3}"/>
+        
+        <h:outputText value="Column 4"/>
+        <p:inputText value="#{curRow.column4}"/>
+        
+        <h:outputText value="Column 5"/>
+        <p:inputText value="#{curRow.column5}"/>
     </h:panelGrid>
-    
+
+    <p:commandButton value="#{msgs['save']}" onclick="PF('saveDlgWdgt').show(); return false;"
+                     styleClass="firstbtn" icon="ui-icon-disk"/>
     <p:commandButton value="#{msgs['more']}" process="masterDetail"
                      update=":mainForm:masterDetail"
                      action="#{tableController.navigateToMore}"
-                     styleClass="firstbtn" icon="ui-icon-arrowthick-1-e">
+                     styleClass="btn" icon="ui-icon-arrowthick-1-e">
         <pe:selectDetailLevel step="1"/>
     </p:commandButton>
     <p:commandButton value="#{msgs['back']}" icon="ui-icon-arrowreturnthick-1-n"
@@ -29,4 +44,6 @@
                      immediate="true" styleClass="btn">
         <pe:selectDetailLevel level="1"/>
     </p:commandButton>
+    
+    <ui:include src="/sections/dialogs.xhtml"/>
 </ui:composition>       

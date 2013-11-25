@@ -1,10 +1,16 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pe="http://primefaces.org/ui/extensions">
     <div>
+        <h:outputText value="#{msgs.someInfo}"/>
+
+        <div style="padding:10px 0 10px 0;">
+            <p:commandLink value="Click to simulate NullPointerException"
+                           process="@this" action="#{tableController.simulateException}"/>
+        </div>
+
         <h:outputText value="#{msgs.someInfo}"/>
     </div>
 
