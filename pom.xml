@@ -131,7 +131,7 @@
                     <webappDirectory>${project.build.directory}/webapp</webappDirectory>
                     <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
                     <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                    <!--filteringDeploymentDescriptors>true</filteringDeploymentDescriptors-->
                 </configuration>
             </plugin>
         </plugins>
@@ -147,6 +147,7 @@
             <groupId>${jsf.group}</groupId>
             <artifactId>${jsf.artifact}-api</artifactId>
             <version>${jsf.version}</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>jstl</groupId>
@@ -158,17 +159,13 @@
             <groupId>${jsf.group}</groupId>
             <artifactId>${jsf.artifact}-impl</artifactId>
             <version>${jsf.version}</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>jstl</groupId>
                     <artifactId>jstl</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
-            <version>2.2</version>
         </dependency>
         <dependency>
             <groupId>de.odysseus.juel</groupId>
@@ -180,21 +177,41 @@
             <artifactId>juel-spi</artifactId>
 			<version>2.2.6</version>
         </dependency>
-        
         <dependency>
-   			<groupId>javax.enterprise</groupId>
-   			<artifactId>cdi-api</artifactId>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
             <version>1.1</version>
-   		</dependency>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>jsr250-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>jsr250-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>        
         <dependency>
             <groupId>org.glassfish.main.javaee-api</groupId>
             <artifactId>javax.annotation</artifactId>
             <version>3.1.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.servlet</artifactId>
-            <version>3.1</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
 		
 		<dependency>
@@ -219,30 +236,15 @@
         </dependency>
         
         <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.core</groupId>
-            <artifactId>myfaces-extcdi-core-api</artifactId>
-            <version>${codi.version}</version>
-            <scope>compile</scope>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-api</artifactId>
+            <version>${deltaspike.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.core</groupId>
-            <artifactId>myfaces-extcdi-core-impl</artifactId>
-            <version>${codi.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
-            <artifactId>myfaces-extcdi-jsf20-module-api</artifactId>
-            <version>${codi.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.myfaces.extensions.cdi.modules</groupId>
-            <artifactId>myfaces-extcdi-jsf20-module-impl</artifactId>
-            <version>${codi.version}</version>
-            <scope>runtime</scope>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-impl</artifactId>
+            <version>${deltaspike.version}</version>
         </dependency>        
-        
     </dependencies>
 
     <profiles>
@@ -264,7 +266,7 @@
                 <jsf.impl>mojarra</jsf.impl>
                 <jsf.group>com.sun.faces</jsf.group>
                 <jsf.artifact>jsf</jsf.artifact>
-                <jsf.version>2.1.26</jsf.version>
+                <jsf.version>2.2.4</jsf.version>
             </properties>
         </profile>
     </profiles>
@@ -273,6 +275,6 @@
         <java.version.source>1.6</java.version.source>
         <java.version.target>1.6</java.version.target>
         <project.build.sourceEncoding>iso-8859-1</project.build.sourceEncoding>
-        <codi.version>1.0.5</codi.version>
+        <deltaspike.version>0.5</deltaspike.version>
     </properties>
 </project>

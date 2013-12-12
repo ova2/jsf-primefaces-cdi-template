@@ -2,7 +2,7 @@ package jsf.template.bean;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 
 import javax.inject.Named;
 
